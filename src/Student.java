@@ -15,7 +15,7 @@ public class Student implements Person {
 	}
 	public void makeApplication() {
 		System.out.println("making new app for " + this.first_name);
-		Application app = new Application();
+		DoctorsNoteApplication app = new DoctorsNoteApplication();
 		app.student = this;
 		app.professor_list = this.professors;
 		app.giveDecision();

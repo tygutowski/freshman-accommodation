@@ -1,25 +1,42 @@
-import java.util.ArrayList;
 public class Application {
-	Student student = null;
-	ArrayList<Professor> professor_list = new ArrayList<Professor>();
-	boolean accepted = true;
-	public void giveDecision() {
-		for(Professor professor : professor_list) {
-			if(professor.getDecision() == false) {
-				accepted = false;
-			}
-		}
-		if(accepted) {
-			acceptApplication();
-		}
-		else {
-			denyApplication();
+
+	private StudentLife studentTab;
+
+	public void displayMenu() {
+		System.out.println("---------- Application Menu ----------");
+		System.out.println("1. Academic");
+		System.out.println("2. Health");
+		System.out.println("3. Social");
+		System.out.println("4. Cultural");
+		System.out.println("5. Mental Health");
+		System.out.println("6. Hygiene");
+		System.out.println("0. Exit");
+
+		System.out.print("Please select a tab: ");
+	}
+	
+
+	public void createTab(int n) {
+		switch (n) {
+			case 1:
+				System.out.println("1. Academic");
+				break;
+			case 2:
+				System.out.println("2. Health");
+				break;
+			case 3:
+				studentTab = createStudentTab();
+				studentTab.studentTabInterface();
+				break;
+			case 4:
+				System.out.println("4. Cultural");
+				break;
+			default:
+				break;
 		}
 	}
-	public void acceptApplication() {
-		System.out.println(student.first_name + "'s application has been accepted");
-	}
-	public void denyApplication() {
-		System.out.println(student.first_name + "'s application has been denied");
+
+	private StudentLife createStudentTab() {
+		return StudentLife.getInstance();
 	}
 }

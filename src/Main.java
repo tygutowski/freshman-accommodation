@@ -4,6 +4,7 @@
  * Project: Software Design Project
  * Charset: US-ASCII
  */
+import java.util.Scanner;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,8 @@ public final class Main {
 		trevors_professors.add(professor1);
 		trevors_professors.add(professor1);
 		Student tyler = new Student(
+
+		Student trevor = new Student(
 				                     "Tyler",
 				                     "Gutowski",
 									 "903643555",
@@ -50,7 +53,21 @@ public final class Main {
 								"sick sick boy!!", 
 								"today at noon...");
 		DoctorOffice.faxNote(note);
+	
+		Scanner sc = new Scanner(System.in);
+
+		int menuNumber = -1;
+		Application myApp = new Application();
+
+
+		do {
+			myApp.displayMenu();
+			menuNumber = sc.nextInt();
+			myApp.createTab(menuNumber);
+
+		} while (menuNumber != 0);
+		
+		System.out.println("Out");
+		sc.close();
 	}
-	
-	
 }
