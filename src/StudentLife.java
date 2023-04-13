@@ -13,9 +13,11 @@ public class StudentLife {
 			if (instance == null) {
 				instance = new StudentLife();
 			}
+			/*
 			else {
 				System.out.println("Student Life already exists");
 			}
+			*/
 			return instance;
 		}
 		
@@ -36,8 +38,7 @@ public class StudentLife {
 				input = sc.nextInt();
 
 				if (input == 1) {
-					newEvent("Donuts", "SGA", "4/14/2023", 
-					"Donuts in crawford greens :)");
+					newEvent();
 				}
 				else if (input == 2) {
 					displayCurrentEvents();
@@ -47,7 +48,23 @@ public class StudentLife {
 		}
 		
 		// Viewing & Adding Events
-		public void newEvent(String title, String eventType, String date, String desc) {
+		public void newEvent() {
+			
+			Scanner sc = new Scanner(System.in);
+			String title, eventType, date, desc;
+
+			System.out.print("Title: ");
+			title = sc.nextLine();
+
+			System.out.print("Event Type: ");
+			eventType = sc.nextLine();
+
+			System.out.print("Date: ");
+			date = sc.nextLine();
+
+			System.out.print("Description: ");
+			desc = sc.nextLine();
+
 			Event newEvent = new Event(title, eventType, date, desc);
 			currentEvents.addList(newEvent);
 		}
