@@ -5,14 +5,47 @@
  * Charset: US-ASCII
  */
 
+import java.util.ArrayList;
+
 public final class Main {
 	public static void main(String[] args) {
-		Student trevor = new Student(
+		
+		Professor professor1 = new Professor("Marius",
+										     "Silaghi",
+										     "msilaghi@fit.edu",
+										     false);
+		Professor professor2 = new Professor("Phillip",
+										     "Chan",
+											 "pkchan@fit.edu",
+											 true);
+		Professor professor3 = new Professor("William",
+										     "Shoaff",
+											 "wds@fit.edu",
+											 false);
+		ArrayList<Professor> tylers_professors = new ArrayList<Professor>();
+		tylers_professors.add(professor3);
+		tylers_professors.add(professor3);
+		
+		ArrayList<Professor> trevors_professors = new ArrayList<Professor>();
+		trevors_professors.add(professor1);
+		trevors_professors.add(professor1);
+		trevors_professors.add(professor1);
+		Student tyler = new Student(
 				                     "Tyler",
 				                     "Gutowski",
 									 "903643555",
-				                     "tgutowski2020@fit.edu"
+				                     "tgutowski2020@fit.edu",
+				                     tylers_professors
 				                     );
+		Student trevor = new Student(
+                "trev",
+                "orschiff",
+				 "1030192313",
+                "mr schiff@fit.edu",
+                trevors_professors
+                );
+		tyler.makeApplication();
+		trevor.makeApplication();
 		Note note = DoctorOffice.createNote("Tyler Gutowski",
 								"sick sick boy!!", 
 								"today at noon...");
