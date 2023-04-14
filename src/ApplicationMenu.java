@@ -14,12 +14,9 @@ public final class ApplicationMenu extends MenuBase {
 	private static CrisisOutreachMenu crisisOutreachTab;
 	private static MeditationMenu meditationTab;	
 	public ApplicationMenu() {
-		addOption(this::findEvent, // handler
+		addOption(this::eventHub, // handler
 				 "1",        // name
-				 "Find an event");
-		addOption(this::createEvent, // handler
-				 "2",        // name
-				 "Create an event");  
+				 "Event Hub");
 		addOption(this::openDoctorsNote, // handler
 				 "6",        // name
 				 "Doctors Note Application");  
@@ -35,14 +32,11 @@ public final class ApplicationMenu extends MenuBase {
 		return "Login Menu";
 	}
 	
-	private Boolean findEvent(final HashMap<String, String> args) {
-		
+	private Boolean eventHub(final HashMap<String, String> args) {
+		MenuManager.enterMenu(new StudentLifeMenu());
 		return true;
 	}
-	private Boolean createEvent(final HashMap<String, String> args) {
-		
-		return true;
-	}
+
 	private Boolean openDoctorsNote(final HashMap<String, String> args) {
 		MenuManager.enterMenu(new DoctorsNoteMenu());
 		return true;

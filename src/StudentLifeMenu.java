@@ -1,7 +1,7 @@
-
+import java.util.HashMap;
 import java.util.Scanner;
 
-public class StudentLifeMenu {
+public class StudentLifeMenu extends MenuBase{
 	// Private global variable for the class to access
 	
 		private static StudentLifeMenu instance = null;
@@ -22,8 +22,19 @@ public class StudentLifeMenu {
 		}
 		
 		// Constructor
-		private StudentLifeMenu() { }
+		//private StudentLifeMenu() { }
 		
+
+		public StudentLifeMenu() {
+			addOption(this::newEvent,                 // handler
+					  "new",                       // name
+					  "Create a new event");
+			addOption(this::displayCurrentEvents,
+					  "view",
+					  "View current events");
+		}
+
+		/*
 		public void studentTabInterface() {
 			
 			Scanner sc = new Scanner(System.in);
@@ -46,9 +57,10 @@ public class StudentLifeMenu {
 
 			} while (input != 0);
 		}
+		*/
 		
 		// Viewing & Adding Events
-		public void newEvent() {
+		public Boolean newEvent(final HashMap<String, String> args) {
 			
 			Scanner sc = new Scanner(System.in);
 			String title, eventType, date, desc;
@@ -67,10 +79,19 @@ public class StudentLifeMenu {
 
 			Event newEvent = new Event(title, eventType, date, desc);
 			currentEvents.addList(newEvent);
+
+			return true;
 		}
 		
-		public void displayCurrentEvents() {
+		public Boolean displayCurrentEvents(final HashMap<String, String> args) {
 			currentEvents.printList();
+			return true;
+		}
+
+
+
+		public String getName() {
+			return "Student Life Tab";
 		}
 		
 }
