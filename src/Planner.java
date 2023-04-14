@@ -11,7 +11,7 @@ import java.util.LinkedList;
 /**
  * Student planner for course assignments and other important events
  */
-public class Planner {
+public final class Planner {
     // Assignments in planner
     private LinkedList<Assignment> m_assts = new LinkedList<>();
 
@@ -71,5 +71,31 @@ public class Planner {
         }
         
         return due;
+    }
+    
+    /**
+     * Print planner to console
+     */
+    public void print() {
+        // No assignments
+        if (m_assts.size() == 0) {
+            System.out.println("Planner is empty! Go relax :)");
+        }
+        else {
+            // Hopefully you never have something due before 2000 or this will break
+            Date lastDate = Assignment.str2date("1/1/2000");
+            
+            for (final Assignment asst : m_assts) {
+                // Separate assignments by date
+                if (asst.dueDate.after(lastDate)) {
+                    lastDate = asst.dueDate;
+                    
+                    System.out.printf("Due on %s%n",
+                            Assignment.date2str(asst.dueDate));
+                }
+                
+                System.out.printf("  %s - %s%n", asst.course, asst.name);
+            }
+        }
     }
 }

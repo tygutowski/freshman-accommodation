@@ -20,6 +20,9 @@ public final class ApplicationMenu extends MenuBase {
         addOption(this::openPlannerMgr, // handler
                 "3",        // name
                 "Planner Manager");
+        addOption(this::openSleepMgr, // handler
+                "4",        // name
+                "Sleep Schedule Manager");
 		addOption(this::openDoctorsNote, // handler
 				 "6",        // name
 				 "Doctors Note Application");  
@@ -45,6 +48,11 @@ public final class ApplicationMenu extends MenuBase {
 	    return true;
 	}
 
+    private Boolean openSleepMgr(final HashMap<String, String> args) {
+        MenuManager.enterMenu(new SleepMenu());
+        return true;
+    }
+	
 	private Boolean openDoctorsNote(final HashMap<String, String> args) {
 		MenuManager.enterMenu(new DoctorsNoteMenu());
 		return true;

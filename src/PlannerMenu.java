@@ -8,7 +8,6 @@
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Date;
 
 /**
  * Menu for planner manager use case (#3)
@@ -33,6 +32,7 @@ public final class PlannerMenu extends MenuBase {
                 new Assignment("CSE3421", "Exam 2",                    "4/18/2023")
           ));
 
+    // Planner
     private Planner m_planner = new Planner();
     
 	public PlannerMenu() {
@@ -40,9 +40,9 @@ public final class PlannerMenu extends MenuBase {
 				  "import",                          // name
 				  "Import assignments from Canvas"); // description     
 		
-        addOption(this::doView,  // handler
-                "view",          // name
-                "View planner"); // description   
+        addOption(this::doView,    // handler
+                  "view",          // name
+                  "View planner"); // description   
 		
         addOption(this::doAddAsst,             // handler
                   "addAsst",                   // name
@@ -59,11 +59,11 @@ public final class PlannerMenu extends MenuBase {
                   new Arg("course", "Assignment course code"),
                   new Arg("name", "Assignment name"));
         
-        addOption(this::doTestNotify,                          // handler
-                "testNotify",                                  // name
-                "Test notification system for specified date", // description    
-                // arguments(list)
-                new Arg("date", "Assignment date (MUST BE mm/dd/yyyy format)"));
+        addOption(this::doTestNotify,                            // handler
+                  "testNotify",                                  // name
+                  "Test notification system for specified date", // description    
+                  // arguments(list)
+                  new Arg("date", "Assignment date (MUST BE mm/dd/yyyy format)"));
 	}
 	
 	public String getName() {
@@ -84,39 +84,17 @@ public final class PlannerMenu extends MenuBase {
 	    
 	    System.out.println("Imported data from Canvas into planner");
 	    
-		return true;
+		return false;
 	}
 	
     /**
      * View planner command handler
      */
-    private Boolean doView(final HashMap<String, String> args) {
-        final LinkedList<Assignment> assts = m_planner.dueOnDate(null);
-        
+    private Boolean doView(final HashMap<String, String> args) {   
         System.out.println("===================================");
         System.out.println("Planner");
-        System.out.println("===================================");  
-        
-        // No assignments
-        if (assts.size() == 0) {
-            System.out.println("Planner is empty! Go relax :)");
-        }
-        else {
-            // Hopefully you never have something due before 2000 or this will break
-            Date lastDate = Assignment.str2date("1/1/2000");
-            
-            for (final Assignment asst : assts) {
-                // Separate assignments by date
-                if (asst.dueDate.after(lastDate)) {
-                    lastDate = asst.dueDate;
-                    
-                    System.out.printf("Due on %s%n",
-                            Assignment.date2str(asst.dueDate));
-                }
-                
-                System.out.printf("  %s - %s%n", asst.course, asst.name);
-            }
-        }
+        System.out.println("===================================");   
+        m_planner.print();
 
         return false;
     }
@@ -142,7 +120,7 @@ public final class PlannerMenu extends MenuBase {
             System.out.println("Failed to remove assignment from planner");
         }
         
-        return true;
+        return false;
     }
     
     /**
