@@ -54,12 +54,17 @@ public class Planner {
      * @param date Specified date (MUST BE mm/dd/yyyy format)
      */
     public LinkedList<Assignment> dueOnDate(final String date) {
+        // No due date specified = get all assignments
+        if (date == null) {
+            return m_assts;
+        }
+        
         final LinkedList<Assignment> due = new LinkedList<>();
-        final Date dateNow = Assignment.date(date);
+        final Date dateNow = Assignment.str2date(date);
 
         if (dateNow != null) {
             for (final Assignment asst : m_assts) {
-                if (asst.dueDate.compareTo(dateNow) == 0) {
+                if (asst.dueDate.equals(dateNow)) {
                     due.add(asst);
                 }
             }   
