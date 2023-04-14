@@ -16,12 +16,10 @@ public abstract class MenuBase {
 	private final LinkedList<Option> m_options = new LinkedList<>();
 
 	public MenuBase() {
-		// All menus have an exit command
-		addOption(this::doExit,   // handler
-				"exit",           // name
-				"Exit menu",      // description
-				(List<String>)null,
-				(List<String>)null); // arguments (list)
+		// Exit command for exiting to the previous menu
+		addOption(this::doExit, // handler
+			      "exit",       // name
+			      "Exit menu"); // description
 	}
 
 	/**
@@ -37,15 +35,16 @@ public abstract class MenuBase {
 	 * @param desc     Option description
 	 * @param args     Option arguments
 	 */
-	public void addOption(final Function<HashMap<String, String>, Void> callback,
-			final String name, final String desc, final List<String> args, final List<String> argDesc) {
-		m_options.add(new Option(callback, name, desc, args, argDesc));
+	public void addOption(final Function<HashMap<String, String>, Boolean> callback,
+			final String name, final String desc, final Arg... args) {
+		m_options.add(new Option(callback, name, desc, args));
 	}
 
 	/**
 	 * Show menu usage
 	 */
 	public void showUsage() {
+	    System.out.println("===================================");
 		System.out.println(getName());
 		System.out.println("===================================");
 		System.out.println("Commands:");
@@ -57,8 +56,9 @@ public abstract class MenuBase {
 
 			// Option arguments
 			if (o.args != null) {
-				for(int i = 0; i < o.args.size(); i++) {
-					System.out.printf("     %-15s %s\n", o.args.get(i), o.argDesc.get(i));
+				for (int i = 0; i < o.args.size(); i++) {
+				    final Arg arg = o.args.get(i);
+					System.out.printf("     %-15s %s\n", arg.name, arg.desc);
 				}
 			}
 		}
@@ -95,7 +95,7 @@ public abstract class MenuBase {
 
 			// Command is followed by arguments
 			for (int i = 0; i < args.size(); i++) {
-				argsMap.put(option.args.get(i), args.get(i));
+				argsMap.put(option.args.get(i).name, args.get(i));
 			}
 		}
 
@@ -108,8 +108,8 @@ public abstract class MenuBase {
 	/**
 	 * Exit command handler
 	 */
-	private Void doExit(final HashMap<String, String> args) {
+	private Boolean doExit(final HashMap<String, String> args) {
 		MenuManager.exitMenu();
-		return null;
+		return false;
 	}
 }

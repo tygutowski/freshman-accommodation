@@ -10,9 +10,6 @@ public final class Main2 {
 		// Start from example use case menu
 		MenuManager.enterMenu(new MainMenu());
 
-		// Initially show usage
-		MenuManager.showUsage();
-
 		// Process input
 		MenuManager.mainLoop();
 	}

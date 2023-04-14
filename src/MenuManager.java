@@ -34,7 +34,6 @@ public final class MenuManager {
 	 */
 	public static void mainLoop() {
 		while (isRunning()) {
-			System.out.println();
 			System.out.print("Enter command: ");
 
 			// Wait for input
@@ -42,15 +41,19 @@ public final class MenuManager {
 				;
 			}
 
+			clearScreen();
+			
 			// Split user command into tokens
 			final String line = s_scanner.nextLine();
 			final LinkedList<String> tokens = new LinkedList<String>(Arrays.asList(line.split("\\s+")));
 
 			if (tokens.size() > 0) {
 				final String cmd = tokens.remove(0);
-
-				assert isRunning() : "No menu is open";
-				s_menuStack.peek().doCommand(cmd, tokens);
+				
+				// Show usage if invalid command is entered
+				if (!s_menuStack.peek().doCommand(cmd, tokens)) {
+				    showUsage();
+				}
 			}
 		}
 	}
@@ -69,6 +72,8 @@ public final class MenuManager {
 	 * @param menu New menu
 	 */
 	public static void enterMenu(final MenuBase menu) {
+	    clearScreen();
+	    
 		assert menu != null;
 		s_menuStack.push(menu);
 		
@@ -80,6 +85,8 @@ public final class MenuManager {
 	 * Exit to previous menu
 	 */
 	public static void exitMenu() {
+	    clearScreen();
+	    
 		assert s_menuStack.size() > 1 : "Can't exit root menu";
 		s_menuStack.pop();
 		
@@ -88,5 +95,26 @@ public final class MenuManager {
 		if (s_menuStack.peek() != null) {
 		    s_menuStack.peek().showUsage();   
 		}
+	}
+	
+	/**
+	 * Clear console text
+	 */
+	private static void clearScreen() {
+	    try {
+	        // Check for Windows OS
+	        if (System.getProperty("os.name").contains("Windows")) {
+	            // Run cls command
+	            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+	        }
+	        else {
+	            // Not Windows, try ANSI escape codes
+	            System.out.print("\033[H\033[2J");  
+	            System.out.flush();     
+	        }
+	    }
+	    catch (Exception e) {
+	        ;
+	    }
 	}
 }
