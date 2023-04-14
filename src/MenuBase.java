@@ -58,7 +58,7 @@ public abstract class MenuBase {
 			if (o.args != null) {
 				for (int i = 0; i < o.args.size(); i++) {
 				    final Arg arg = o.args.get(i);
-					System.out.printf("     %-15s %s\n", arg.name, arg.desc);
+					System.out.printf("  %-18s %s\n", arg.name, arg.desc);
 				}
 			}
 		}

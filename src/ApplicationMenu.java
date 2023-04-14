@@ -6,9 +6,7 @@
  */
 
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public final class ApplicationMenu extends MenuBase {
 	private static StudentLifeMenu studentTab;
@@ -50,7 +48,7 @@ public final class ApplicationMenu extends MenuBase {
 		return true;
 	}
 	private Boolean openCrisisOutreach(final HashMap<String, String> args) {
-		//MenuManager.enterMenu(new CrisisOutreachMenu());
+		MenuManager.enterMenu(new CrisisOutreachMenu());
 		return true;
 	}
 	private Boolean openMeditation(final HashMap<String, String> args) {
