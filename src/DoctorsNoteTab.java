@@ -15,7 +15,7 @@ public class DoctorsNoteTab {
 		return instance;
 	}
 		
-	public void studentTabInterface() {
+	public void doctorsNoteTabInterface() {
 		
 		Scanner sc = new Scanner(System.in);
 		int input = -1;
@@ -39,16 +39,27 @@ public class DoctorsNoteTab {
 	}
 	
 	public void createForm() {
-		DoctorsNoteForm app = new DoctorsNoteForm();
-		app.student = Application.student;
-		app.giveDecision();
+		for (Note note : note_list) {
+			if(note.getStudent() == Application.student) {
+				System.out.println("Doctor's note form created. Check in later to see if its been approved.");
+		 		DoctorsNoteForm form = new DoctorsNoteForm();
+				form.student = Application.student;
+				form.giveDecision();
+				form_list.add(form);
+			}
+		}
 	}
 	
 	public void viewResults() {
+		boolean form_found = false;
 		for(DoctorsNoteForm form : form_list) {
-			if(form.student.equals(Application.username)) {
+			if(form.student == Application.student) {
+				form_found = true;
 				System.out.println("Form accepted: " + Boolean.toString(form.accepted));
 			}
+		}
+		if (!form_found) {
+			System.out.println("You have no forms submitted.");
 		}
 	}
 	

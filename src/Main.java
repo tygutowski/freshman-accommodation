@@ -9,6 +9,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public final class Main {
+	public static String username = "";
+	public static boolean loggedIn = false;
 	public static ArrayList<Student> student_list = new ArrayList<Student>();
 	public static void main(String[] args) {
 		
@@ -58,10 +60,8 @@ public final class Main {
 
 		int menuNumber = -1;
 		Application myApp = new Application();
-		String username = "";
 		
 		do {
-			boolean loggedIn = false;
 			while (!loggedIn) {
 				myApp.displayLoginScreen();
 				username = sc.nextLine();
@@ -70,7 +70,6 @@ public final class Main {
 			myApp.displayMenu();
 			menuNumber = sc.nextInt();
 			myApp.createTab(menuNumber);
-
 		} while (menuNumber != 0);
 		
 		System.out.println("Out");

@@ -10,17 +10,5 @@ public class DoctorsNoteForm {
 				accepted = false;
 			}
 		}
-		if(accepted) {
-			acceptApplication();
-		}
-		else {
-			denyApplication();
-		}
-	}
-	public void acceptApplication() {
-		System.out.println(student.first_name + "'s application has been accepted");
-	}
-	public void denyApplication() {
-		System.out.println(student.first_name + "'s application has been denied");
 	}
 }

@@ -27,12 +27,14 @@ public class Application {
 	
 	public void displayMenu() {
 		System.out.println("---------- Application Menu ----------");
-		System.out.println("1. Academic");
-		System.out.println("2. Health");
-		System.out.println("3. Social");
-		System.out.println("4. Cultural");
-		System.out.println("5. Mental Health");
-		System.out.println("6. Hygiene");
+		System.out.println("1. Finding Events");
+		System.out.println("2. Creating Events");
+		System.out.println("3. ");
+		System.out.println("4. ");
+		System.out.println("5. ");
+		System.out.println("6. Doctors Note");
+		System.out.println("7. Crisis Outreach");
+		System.out.println("8. Meditation");	
 		System.out.println("0. Exit");
 
 		System.out.print("Please select a tab: ");
@@ -42,32 +44,28 @@ public class Application {
 	public void createTab(int n) {
 		switch (n) {
 			case 1:
-				System.out.println("1. Academic");
-				break;
-			case 2:
-				System.out.println("2. Health");
-				break;
-			case 3:
 				studentTab = createStudentTab();
 				studentTab.studentTabInterface();
 				break;
+			case 2:
+				break;
+			case 3:
+				break;
 			case 4:
-				System.out.println("4. Cultural");
 				break;
 			case 5:
-			
 				break;
 			case 6:
 				doctorsNoteTab = createDoctorsNoteTab();
-				//doctorsNoteTab.doctorsNoteTabInterface();
+				doctorsNoteTab.doctorsNoteTabInterface();
 				break;
 			case 7:
 				crisisOutreachTab = createCrisisOutreachTab();
-				//crisisOutreachTab.crisisOutreachTabInterface();
+				crisisOutreachTab.crisisOutreachTabInterface();
 				break;
 			case 8:
 				meditationTab = createMeditationTab();
-				//meditationTab.meditationTabInterface();
+				meditationTab.meditationTabInterface();
 				break;
 			default:
 				break;

@@ -10,4 +10,9 @@ public class CrisisOutreachTab {
 		}
 		return instance;
 	}
+
+	public void crisisOutreachTabInterface() {
+		// TODO Auto-generated method stub
+		
+	}
 }

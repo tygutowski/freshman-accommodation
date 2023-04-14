@@ -10,4 +10,9 @@ public class MeditationTab {
 		}
 		return instance;
 	}
+
+	public void meditationTabInterface() {
+		// TODO Auto-generated method stub
+		
+	}
 }
