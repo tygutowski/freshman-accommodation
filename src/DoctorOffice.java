@@ -6,7 +6,7 @@ public class DoctorOffice {
 							 date);
 		return note;
 	}
-	public static void faxNote(Admissions admissions, Note note) {
-		admissions.receiveNote(note);
+	public static void faxNote(Note note) {
+		Admissions.receiveNote(note);
 	}
 }

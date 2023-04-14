@@ -1,17 +1,17 @@
 
 import java.util.Scanner;
 
-public class StudentLifeTab {
+public class StudentLifeMenu {
 	// Private global variable for the class to access
 	
-		private static StudentLifeTab instance = null;
+		private static StudentLifeMenu instance = null;
 		private static EventList currentEvents = new EventList();
 		
 		
 		// Interface to instantiate global variable once
-		public static synchronized StudentLifeTab getInstance () {
+		public static synchronized StudentLifeMenu getInstance () {
 			if (instance == null) {
-				instance = new StudentLifeTab();
+				instance = new StudentLifeMenu();
 			}
 			/*
 			else {
@@ -22,7 +22,7 @@ public class StudentLifeTab {
 		}
 		
 		// Constructor
-		private StudentLifeTab() { }
+		private StudentLifeMenu() { }
 		
 		public void studentTabInterface() {
 			
