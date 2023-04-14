@@ -12,7 +12,7 @@ public final class ApplicationMenu extends MenuBase {
 	private static StudentLifeMenu studentTab;
 	private static DoctorsNoteMenu doctorsNoteTab;
 	private static CrisisOutreachMenu crisisOutreachTab;
-	private static MeditationTab meditationTab;	
+	private static MeditationMenu meditationTab;	
 	public ApplicationMenu() {
 		addOption(this::findEvent, // handler
 				 "1",        // name
@@ -52,7 +52,7 @@ public final class ApplicationMenu extends MenuBase {
 		return true;
 	}
 	private Boolean openMeditation(final HashMap<String, String> args) {
-		//MenuManager.enterMenu(new MeditationTab());
+		MenuManager.enterMenu(new MeditationMenu());
 		return true;
 	}
 }
