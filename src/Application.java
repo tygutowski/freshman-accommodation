@@ -1,7 +1,30 @@
 public class Application {
 
-	private StudentLife studentTab;
-
+	public static String username = "";
+	public static Student student = null;
+	private static StudentLifeTab studentTab;
+	private static DoctorsNoteTab doctorsNoteTab;
+	private static CrisisOutreachTab crisisOutreachTab;
+	private static MeditationTab meditationTab;	
+	
+	public void displayLoginScreen() {
+		System.out.println("---------- Login Menu ----------");
+		System.out.println("Enter username: ");
+	}
+	
+	public boolean login(String user) {
+		Application.username = user;
+		for(Student stu : Main.student_list) {
+			if (user.equals(stu.username)) {
+				student = stu;
+				System.out.println("Logged in as " + student.first_name + " " + student.last_name);
+				return true;
+			}
+		}
+		System.out.println("You are not in the system. Try again.");
+		return false;
+	}
+	
 	public void displayMenu() {
 		System.out.println("---------- Application Menu ----------");
 		System.out.println("1. Academic");
@@ -31,12 +54,36 @@ public class Application {
 			case 4:
 				System.out.println("4. Cultural");
 				break;
+			case 5:
+			
+				break;
+			case 6:
+				doctorsNoteTab = createDoctorsNoteTab();
+				//doctorsNoteTab.doctorsNoteTabInterface();
+				break;
+			case 7:
+				crisisOutreachTab = createCrisisOutreachTab();
+				//crisisOutreachTab.crisisOutreachTabInterface();
+				break;
+			case 8:
+				meditationTab = createMeditationTab();
+				//meditationTab.meditationTabInterface();
+				break;
 			default:
 				break;
 		}
 	}
 
-	private StudentLife createStudentTab() {
-		return StudentLife.getInstance();
+	private StudentLifeTab createStudentTab() {
+		return StudentLifeTab.getInstance();
+	}
+	private DoctorsNoteTab createDoctorsNoteTab() {
+		return DoctorsNoteTab.getInstance();
+	}
+	private CrisisOutreachTab createCrisisOutreachTab() {
+		return CrisisOutreachTab.getInstance();
+	}
+	private MeditationTab createMeditationTab() {
+		return MeditationTab.getInstance();
 	}
 }

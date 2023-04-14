@@ -1,18 +1,18 @@
 
 public class Note {
 	
-	String noteName = "";
+	Student noteStudent = null;
 	String noteDesc = "";
 	String noteDate = "";
 	
-	public Note(String name, String desc, String date) {
-		noteName = name;
+	public Note(Student student, String desc, String date) {
+		noteStudent = student;
 		noteDesc = desc;
 		noteDate = date;
 	}
 	
-	public String getName() {
-		return this.noteName;
+	public Student getStudent() {
+		return this.noteStudent;
 	}
 	
 	public String getDesc() {

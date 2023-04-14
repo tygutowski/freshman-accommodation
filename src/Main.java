@@ -9,8 +9,10 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public final class Main {
+	public static ArrayList<Student> student_list = new ArrayList<Student>();
 	public static void main(String[] args) {
 		
+		// Things that should happen without our software. We just make this code to replace potential APIs.
 		Professor professor1 = new Professor("Marius",
 										     "Silaghi",
 										     "msilaghi@fit.edu",
@@ -29,38 +31,42 @@ public final class Main {
 		
 		ArrayList<Professor> trevors_professors = new ArrayList<Professor>();
 		trevors_professors.add(professor1);
-		trevors_professors.add(professor1);
-		trevors_professors.add(professor1);
-		Student tyler = new Student(
-
-		Student trevor = new Student(
-				                     "Tyler",
-				                     "Gutowski",
-									 "903643555",
-				                     "tgutowski2020@fit.edu",
-				                     tylers_professors
-				                     );
-		Student trevor = new Student(
-                "trev",
-                "orschiff",
-				 "1030192313",
-                "mr schiff@fit.edu",
-                trevors_professors
-                );
-		tyler.makeApplication();
-		trevor.makeApplication();
-		Note note = DoctorOffice.createNote("Tyler Gutowski",
-								"sick sick boy!!", 
-								"today at noon...");
-		DoctorOffice.faxNote(note);
-	
+		trevors_professors.add(professor2);
+		trevors_professors.add(professor3);
+		Student tyler = new Student("Tyler",
+				                    "Gutowski",
+									"903643555",
+				                    "tgutowski2020@fit.edu",
+				                    tylers_professors);
+		student_list.add(tyler);
+		Note note1 = DoctorOffice.createNote(tyler, "He is so so sick!! So so sick!!", "7:36am 4/13/2023");
+		Student trevor = new Student("Trevor",
+									 "Schiff",
+									 "903123456",
+									 "tschiff2020@fit.edu",
+									 trevors_professors);
+		student_list.add(trevor);
+		Note note2 = DoctorOffice.createNote(trevor, "He is so so sick!! So so sick!!", "7:36am 4/13/2023");
+		Admissions admissions_office = new Admissions();
+		DoctorOffice.faxNote(admissions_office, note1);
+		DoctorOffice.faxNote(admissions_office, note2);
+				
+		
+		
+		// Input
 		Scanner sc = new Scanner(System.in);
 
 		int menuNumber = -1;
 		Application myApp = new Application();
-
-
+		String username = "";
+		
 		do {
+			boolean loggedIn = false;
+			while (!loggedIn) {
+				myApp.displayLoginScreen();
+				username = sc.nextLine();
+				loggedIn = myApp.login(username);
+			}
 			myApp.displayMenu();
 			menuNumber = sc.nextInt();
 			myApp.createTab(menuNumber);

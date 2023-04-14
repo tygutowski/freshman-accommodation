@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class DoctorsNoteApplication {
+public class DoctorsNoteForm {
 	Student student = null;
 	ArrayList<Professor> professor_list = new ArrayList<Professor>();
 	boolean accepted = true;
@@ -23,3 +23,4 @@ public class DoctorsNoteApplication {
 	public void denyApplication() {
 		System.out.println(student.first_name + "'s application has been denied");
 	}
+}
