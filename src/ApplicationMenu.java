@@ -20,6 +20,9 @@ public final class ApplicationMenu extends MenuBase {
         addOption(this::openPlannerMgr, // handler
                 "3",        // name
                 "Planner Manager");
+        addOption(this::openSleepMgr, // handler
+                "4",        // name
+                "Sleep Schedule Manager");
 		addOption(this::openDoctorsNote, // handler
 				 "6",        // name
 				 "Doctors Note Application");  
@@ -37,24 +40,29 @@ public final class ApplicationMenu extends MenuBase {
 	
 	private Boolean eventHub(final HashMap<String, String> args) {
 		MenuManager.enterMenu(new StudentLifeMenu());
-		return true;
+		return false;
 	}
 	
 	private Boolean openPlannerMgr(final HashMap<String, String> args) {
 	    MenuManager.enterMenu(new PlannerMenu());
-	    return true;
+	    return false;
 	}
 
+    private Boolean openSleepMgr(final HashMap<String, String> args) {
+        MenuManager.enterMenu(new SleepMenu());
+        return false;
+    }
+	
 	private Boolean openDoctorsNote(final HashMap<String, String> args) {
 		MenuManager.enterMenu(new DoctorsNoteMenu());
-		return true;
+		return false;
 	}
 	private Boolean openCrisisOutreach(final HashMap<String, String> args) {
 		MenuManager.enterMenu(new CrisisOutreachMenu());
-		return true;
+		return false;
 	}
 	private Boolean openMeditation(final HashMap<String, String> args) {
 		MenuManager.enterMenu(new MeditationMenu());
-		return true;
+		return false;
 	}
 }

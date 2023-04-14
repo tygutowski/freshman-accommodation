@@ -32,19 +32,19 @@ public final class CrisisOutreachQuestionnaire extends MenuBase {
 	public Boolean submitForm(final HashMap<String, String> args) {
 		System.out.println("Form submitted. You will be contacted shortly by a counselor!");
 		CrisisOutreachMenu.form_list.add(form);
-		return true;
+		return false;
 	}
 	// Submit mood from 1 to 10
 	public Boolean enterMood(final HashMap<String, String> args) {
 		form.mood = args.get("mood");
 		System.out.println("Your mood of '" + args.get("mood") + "' has been submitted");
-		return true;
+		return false;
 	}
 	// Submit symptoms as a String
 	public Boolean enterSymptoms(final HashMap<String, String> args) {
 		form.symptoms = args.get("symp");
 		System.out.println("Your symptom of '" + args.get("symp") + "' has been submitted");
-		return true;
+		return false;
 	}
 	
 	public String getName() {

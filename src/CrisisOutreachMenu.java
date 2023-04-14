@@ -28,14 +28,14 @@ public class CrisisOutreachMenu extends MenuBase {
 	// Go to Questionnaire menu
 	public Boolean createQuestionnaire(final HashMap<String, String> args) {
 		MenuManager.enterMenu(new CrisisOutreachQuestionnaire());
-		return true;
+		return false;
 	}
 	// Enter a Zoom call (Pseudocode)
 	public Boolean beginCall(final HashMap<String, String> args) {
 		System.out.println("No Zoom API. Sorry!");
 		// If student is being called by counselor
 		// Student can answer via Zoom
-		return true;
+		return false;
 	}
 	
 	public String getName() {

@@ -35,6 +35,7 @@ public final class Assignment {
             return fmt.parse(s);
         }
         catch (ParseException e) {
+            assert false : "Bad date string format";
             return null;
         }
     }

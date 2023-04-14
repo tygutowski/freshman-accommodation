@@ -80,12 +80,12 @@ public class StudentLifeMenu extends MenuBase{
 			Event newEvent = new Event(title, eventType, date, desc);
 			currentEvents.addList(newEvent);
 
-			return true;
+			return false;
 		}
 		
 		public Boolean displayCurrentEvents(final HashMap<String, String> args) {
 			currentEvents.printList();
-			return true;
+			return false;
 		}
 
 

@@ -100,8 +100,10 @@ public abstract class MenuBase {
 		}
 
 		// Call option handler
-		option.handler.apply(argsMap);
-
+		if (option.handler.apply(argsMap)) {
+		    MenuManager.showUsage();
+		}
+		
 		return true;
 	}
 

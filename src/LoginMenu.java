@@ -49,6 +49,6 @@ public final class LoginMenu extends MenuBase {
 			student = student1;
 			MenuManager.enterMenu(new ApplicationMenu());
 		}
-		return true;
+		return false;
 	}
 }

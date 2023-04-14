@@ -35,7 +35,7 @@ public class DoctorsNoteMenu extends MenuBase {
 		if (!notesFound) {
 			System.out.println("You have no doctor's notes to submit!");
 		}
-		return true;
+		return false;
 	}
 	//  View the results on the students form
 	public Boolean viewResults(final HashMap<String, String> args) {
@@ -49,7 +49,7 @@ public class DoctorsNoteMenu extends MenuBase {
 		if (!form_found) {
 			System.out.println("You have no forms submitted.");
 		}
-		return true;
+		return false;
 	}
 	// Receive the doctors note from the portal
 	public static void receiveFromPortal(Note note) {
