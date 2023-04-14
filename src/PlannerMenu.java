@@ -8,6 +8,7 @@
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Date;
 
 /**
  * Menu for planner manager use case (#3)
@@ -38,6 +39,10 @@ public final class PlannerMenu extends MenuBase {
 		addOption(this::doImport,                    // handler
 				  "import",                          // name
 				  "Import assignments from Canvas"); // description     
+		
+        addOption(this::doView,  // handler
+                "view",          // name
+                "View planner"); // description   
 		
         addOption(this::doAddAsst,             // handler
                   "addAsst",                   // name
@@ -81,6 +86,40 @@ public final class PlannerMenu extends MenuBase {
 	    
 		return true;
 	}
+	
+    /**
+     * View planner command handler
+     */
+    private Boolean doView(final HashMap<String, String> args) {
+        final LinkedList<Assignment> assts = m_planner.dueOnDate(null);
+        
+        System.out.println("===================================");
+        System.out.println("Planner");
+        System.out.println("===================================");  
+        
+        // No assignments
+        if (assts.size() == 0) {
+            System.out.println("Planner is empty! Go relax :)");
+        }
+        else {
+            // Hopefully you never have something due before 2000 or this will break
+            Date lastDate = Assignment.str2date("1/1/2000");
+            
+            for (final Assignment asst : assts) {
+                // Separate assignments by date
+                if (asst.dueDate.after(lastDate)) {
+                    lastDate = asst.dueDate;
+                    
+                    System.out.printf("Due on %s%n",
+                            Assignment.date2str(asst.dueDate));
+                }
+                
+                System.out.printf("  %s - %s%n", asst.course, asst.name);
+            }
+        }
+
+        return false;
+    }
 	
     /**
      * Add assignment command handler

@@ -21,15 +21,15 @@ public final class Assignment {
             final String dueDate) {
         this.name = name;
         this.course = course;
-        this.dueDate = date(dueDate);
+        this.dueDate = str2date(dueDate);
     }
     
     /**
      * Create date object from month, day, year
      * @param s Date string must be in mm/dd/yyyy format
      */
-    public static Date date(final String s) {
-        final SimpleDateFormat fmt = new SimpleDateFormat("mm/dd/yyyy");
+    public static Date str2date(final String s) {
+        final SimpleDateFormat fmt = new SimpleDateFormat("MM/dd/yyyy");
         
         try {
             return fmt.parse(s);
@@ -37,5 +37,15 @@ public final class Assignment {
         catch (ParseException e) {
             return null;
         }
+    }
+    
+    /**
+     * Convert Java Date object to string (mm/dd/yyyy)
+     * @param d Date object
+     */
+    @SuppressWarnings("deprecation")
+    public static String date2str(final Date d) {
+        return String.format("%02d/%02d/%04d",
+                d.getMonth() + 1, d.getDate(), d.getYear() + 1900);
     }
 }
