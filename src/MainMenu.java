@@ -5,36 +5,34 @@
  * Charset: US-ASCII
  */
 
-
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
+/**
+ * Main menu
+ */
 public final class MainMenu extends MenuBase {
 	public MainMenu() {
+		addOption(this::doExampleMenu,  // handler
+				  "exampleMenu",        // name
+				  "Open example menu"); // description
+
 		addOption(this::doExampleMenu, // handler
-				 "exampleMenu",        // name
-				 "Open example menu",  // description
-				 (List<String>)null,
-				 (List<String>)null);      // arguments (list)
-		addOption(this::doExampleMenu, // handler
-				 "test",        // name
-				 "argument test",  // description
-				 (List<String>) Arrays.asList("arg1", "arg2"),
-				 (List<String>) Arrays.asList("desc1", "description2"));      // arguments (list)
+				  "test",              // name
+			   	  "argument test",     // description
+				  // arguments (list)
+				  new Arg("arg1", "description1"),
+				  new Arg("arg2", "description2"));
 	}
 
 	public String getName() {
 		return "Main Menu";
 	}
-	
+
 	/**
 	 * Example menu command handler
 	 */
-	private Void doExampleMenu(final HashMap<String, String> args) {
-	    MenuManager.enterMenu(new ExampleMenu());
-
-	    // Necessary because of the "Void" type
-	    return null;
+	private Boolean doExampleMenu(final HashMap<String, String> args) {
+		MenuManager.enterMenu(new ExampleMenu());
+		return false;
 	}
 }

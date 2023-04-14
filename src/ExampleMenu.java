@@ -12,10 +12,12 @@ import java.util.HashMap;
  */
 public final class ExampleMenu extends MenuBase {
 	public ExampleMenu() {
-		addOption(this::doPrintStudent,                // handler
-				 "printStudent",                       // name
-				 "Print supplied student information", // description
-				 "name", "email");                     // arguments (list)
+		addOption(this::doPrintStudent,                 // handler
+				  "printStudent",                       // name
+				  "Print supplied student information", // description
+				  // arguments (list)
+				  new Arg("name", "Student name"),
+				  new Arg("email", "Student email"));                     
 	}
 	
 	public String getName() {
@@ -26,12 +28,10 @@ public final class ExampleMenu extends MenuBase {
 	 * Handler for printStudent option
 	 * @param args Arguments supplied by the user
 	 */
-	private Void doPrintStudent(final HashMap<String, String> args) {
+	private Boolean doPrintStudent(final HashMap<String, String> args) {
 		final String name = args.get("name");
 		final String email = args.get("email");
 		System.out.printf("Student %s has email %s%n", name, email);
-
-		// Necessary because of the "Void" type
-		return null;
+		return true;
 	}
 }

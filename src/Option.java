@@ -6,10 +6,9 @@
  */
 
 import java.util.List;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.function.Function;
-import java.lang.Override;
+import java.util.Arrays;
 
 /**
  * Menu option
@@ -17,24 +16,21 @@ import java.lang.Override;
 public final class Option {
 	// Option handler
 	// - Handler argument is dictionary of command arguments
-	// - Handler return value is Void (not "void", Java function pointers are strange)
-	public final Function<HashMap<String, String>, Void> handler;
+	// - Handler return value is Boolean (whether to show usage again)
+	public final Function<HashMap<String, String>, Boolean> handler;
 
 	// Option name
 	public final String name;
 	// Option description
 	public final String desc;
-	// Option arguments (their names)
-	public final List<String> args;
-	public final List<String> argDesc;
+	// Option arguments
+	public final List<Arg> args;
 	
-	public Option(final Function<HashMap<String, String>, Void> handler,
-			      final String name, final String desc, final List<String> args,
-			      final List<String> argDesc) {
+	public Option(final Function<HashMap<String, String>, Boolean> handler,
+			      final String name, final String desc, final Arg... args) {
 		this.handler = handler;
 		this.name = name;
 		this.desc = desc;
-		this.args = args != null ? args : null;
-		this.argDesc = argDesc != null ? argDesc : null;
+		this.args = args != null ? Arrays.asList(args) : null;
 	}
 }
