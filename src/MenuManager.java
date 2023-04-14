@@ -45,8 +45,35 @@ public final class MenuManager {
 			
 			// Split user command into tokens
 			final String line = s_scanner.nextLine();
-			final LinkedList<String> tokens = new LinkedList<String>(Arrays.asList(line.split("\\s+")));
-
+			final LinkedList<String> tokens = new LinkedList<String>();
+			
+			String currToken = "";
+			boolean inQuotes = false;
+			for (int i = 0; i < line.length(); i++) {
+			    final char c = line.charAt(i);
+			    
+			    // Quoted terms are not split by whitespace
+			    if (c == '\"') {
+			        inQuotes = !inQuotes;
+			    }
+			    // Whitespace ends token (unless it is inside quotes)
+			    else if (!inQuotes && c == ' ' && !currToken.isBlank()) {
+			        tokens.add(currToken);
+			        currToken = "";
+			    }
+			    // Part of token
+			    else {
+			        currToken += c;
+			    }
+			}
+			// Last token
+			tokens.add(currToken);
+			
+			// Unbalanced quotes
+			if (inQuotes) {
+			    continue;
+			}
+			
 			if (tokens.size() > 0) {
 				final String cmd = tokens.remove(0);
 				
