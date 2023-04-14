@@ -7,10 +7,8 @@
 
 public final class Main2 {
 	public static void main(String[] args) {
-		// Start from example use case menu
-		MenuManager.enterMenu(new MainMenu());
-
-		// Process input
+		MenuManager.enterMenu(new LoginMenu());
+		MenuManager.showUsage();
 		MenuManager.mainLoop();
 	}
 }
