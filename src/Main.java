@@ -53,8 +53,6 @@ public final class Main {
 		DoctorOffice.faxNote(admissions_office, note1);
 		DoctorOffice.faxNote(admissions_office, note2);
 				
-		
-		
 		// Input
 		Scanner sc = new Scanner(System.in);
 

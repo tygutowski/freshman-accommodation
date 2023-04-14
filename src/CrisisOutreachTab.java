@@ -12,7 +12,6 @@ public class CrisisOutreachTab {
 	}
 
 	public void crisisOutreachTabInterface() {
-		// TODO Auto-generated method stub
-		
+		return;
 	}
 }

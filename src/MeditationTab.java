@@ -12,7 +12,6 @@ public class MeditationTab {
 	}
 
 	public void meditationTabInterface() {
-		// TODO Auto-generated method stub
-		
+		return;
 	}
 }
