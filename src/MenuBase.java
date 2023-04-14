@@ -5,6 +5,7 @@
  * Charset: US-ASCII
  */
 
+
 import java.util.LinkedList;
 import java.util.HashMap;
 import java.util.function.Function;
@@ -19,7 +20,8 @@ public abstract class MenuBase {
 		addOption(this::doExit,   // handler
 				"exit",           // name
 				"Exit menu",      // description
-				(String[]) null); // arguments (list)
+				(List<String>)null,
+				(List<String>)null); // arguments (list)
 	}
 
 	/**
@@ -36,8 +38,8 @@ public abstract class MenuBase {
 	 * @param args     Option arguments
 	 */
 	public void addOption(final Function<HashMap<String, String>, Void> callback,
-			final String name, final String desc, final String... args) {
-		m_options.add(new Option(callback, name, desc, args));
+			final String name, final String desc, final List<String> args, final List<String> argDesc) {
+		m_options.add(new Option(callback, name, desc, args, argDesc));
 	}
 
 	/**
@@ -51,17 +53,14 @@ public abstract class MenuBase {
 
 		for (final Option o : m_options) {
 			// Option name
-			System.out.printf("%s ", o.name);
+			System.out.printf("%-20s %s\n", o.name, o.desc);
 
 			// Option arguments
 			if (o.args != null) {
-				System.out.printf("%s", String.join(", ", o.args));
+				for(int i = 0; i < o.args.size(); i++) {
+					System.out.printf("     %-15s %s\n", o.args.get(i), o.argDesc.get(i));
+				}
 			}
-
-			// Option description
-			System.out.println();
-			// There has to be a better way
-			System.out.printf("     %s%n", o.desc);
 		}
 	}
 

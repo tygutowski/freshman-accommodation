@@ -26,12 +26,15 @@ public final class Option {
 	public final String desc;
 	// Option arguments (their names)
 	public final List<String> args;
+	public final List<String> argDesc;
 	
 	public Option(final Function<HashMap<String, String>, Void> handler,
-			final String name, final String desc, final String... args) {
+			      final String name, final String desc, final List<String> args,
+			      final List<String> argDesc) {
 		this.handler = handler;
 		this.name = name;
 		this.desc = desc;
-		this.args = args != null ? Arrays.asList(args) : null;
+		this.args = args != null ? args : null;
+		this.argDesc = argDesc != null ? argDesc : null;
 	}
 }
