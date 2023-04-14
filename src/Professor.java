@@ -13,6 +13,7 @@ public class Professor implements Person {
 			this.decision = false;
 		}
 	}
+	// Deny or accept the students application
 	public boolean getDecision() {
 		return this.decision;
 	}

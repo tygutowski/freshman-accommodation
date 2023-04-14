@@ -31,16 +31,17 @@ public class MeditationMenu extends MenuBase {
 				  "Begin a phone call with any available counselors",
 				  new Arg("time", "The time, in military time, that you want to schedule a meditation appointment for"));
 	}
+	// Sets the duration of the meditation session
 	public Boolean setDuration(final HashMap<String, String> args) {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
-				System.out.println("\nYour meditation session for " + args.get("time") + "seconds is over!");
+				notify("\nYour meditation session for " + args.get("time") + "seconds is over!");
 			}
 		}, Integer.parseInt(args.get("time")) * 1000);
 		return true;
 	}
-	
+	// Sets the time a meditation session should start
 	public Boolean setTime(final HashMap<String, String> args) {
 		Timer timer = new Timer();
 		Calendar calendar = Calendar.getInstance();
@@ -49,10 +50,14 @@ public class MeditationMenu extends MenuBase {
 		Date time = calendar.getTime(); // Get the time as a Date object
 		timer.schedule(new TimerTask() {
 		    public void run() {
-		        System.out.println("\nIt's time for your daily meditation!");
+		        notify("\nIt's time for your daily meditation!");
 		    }
 		}, time);
 		return true;
+	}
+	// Sends a notification to the student
+	public void notify(String notification) {
+		System.out.println(notification);
 	}
 	
 	public String getName() {

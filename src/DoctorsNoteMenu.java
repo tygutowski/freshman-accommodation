@@ -14,7 +14,7 @@ public class DoctorsNoteMenu extends MenuBase {
 		}
 		return instance;
 	}
-	
+	// Create a form to request an excused absence
 	public Boolean createForm(final HashMap<String, String> args) {
 		ArrayList<Note> notes_to_remove = new ArrayList<Note>();
 		boolean notesFound = false;
@@ -37,7 +37,7 @@ public class DoctorsNoteMenu extends MenuBase {
 		}
 		return true;
 	}
-	
+	//  View the results on the students form
 	public Boolean viewResults(final HashMap<String, String> args) {
 		boolean form_found = false;
 		for(DoctorsNoteForm form : form_list) {
@@ -51,7 +51,7 @@ public class DoctorsNoteMenu extends MenuBase {
 		}
 		return true;
 	}
-	
+	// Receive the doctors note from the portal
 	public static void receiveFromPortal(Note note) {
 		note_list.add(note);
 	}

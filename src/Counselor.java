@@ -5,6 +5,7 @@ public class Counselor {
 	public Counselor(String n) {
 		name = n;
 	}
+	// View any current forms in the formList
 	public void viewForms() {
 		ArrayList<CrisisOutreachForm> forms_to_remove = new ArrayList<CrisisOutreachForm>();
 		for (CrisisOutreachForm form : CrisisOutreachMenu.form_list) {
@@ -15,7 +16,8 @@ public class Counselor {
 			CrisisOutreachMenu.form_list.remove(form);
 		}
 	}
+	// Enter a Zoom call (Pseudocode)
 	public void beginCall(Student student) {
-		// Call the student via Zoom
+		return;
 	}
 }

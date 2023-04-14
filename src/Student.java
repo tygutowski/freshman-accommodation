@@ -20,6 +20,7 @@ public class Student implements Person {
 			makeDoctorsNote(this);
 		}
 	}
+	// Generate a Doctors note for the student. (Partially pseudocode)
 	public void makeDoctorsNote(Student student) {
 		Note note1 = DoctorOffice.createNote(student, "He is so so sick. Very sick.", "7:36am 4/13/2023");
 		DoctorOffice.faxNote(note1);
