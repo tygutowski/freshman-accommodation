@@ -36,10 +36,10 @@ public class MeditationMenu extends MenuBase {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			public void run() {
-				notify("\nYour meditation session for " + args.get("time") + "seconds is over!");
+			    notify("\nYour meditation session for " + args.get("time") + "seconds is over!");
 			}
 		}, Integer.parseInt(args.get("time")) * 1000);
-		return true;
+		return false;
 	}
 	// Sets the time a meditation session should start
 	public Boolean setTime(final HashMap<String, String> args) {
@@ -53,8 +53,9 @@ public class MeditationMenu extends MenuBase {
 		        notify("\nIt's time for your daily meditation!");
 		    }
 		}, time);
-		return true;
+		return false;
 	}
+	
 	// Sends a notification to the student
 	public void notify(String notification) {
 		System.out.println(notification);

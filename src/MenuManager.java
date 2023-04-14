@@ -40,7 +40,7 @@ public final class MenuManager {
 			while (!s_scanner.hasNextLine()) {
 				;
 			}
-
+			
 			clearScreen();
 			
 			// Split user command into tokens
