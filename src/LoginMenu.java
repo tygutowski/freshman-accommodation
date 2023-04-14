@@ -15,8 +15,8 @@ public final class LoginMenu extends MenuBase {
 		addOption(this::tryLogin, // handler
 				 "login",        // name
 				 "Login to account",  // description
-				 (Args("user", "Student username [jsmith9999]"),
-				 (Args("pass", "Student password"));      // arguments (list)
+				 new Arg("user", "Student username [jsmith9999]"),
+				 new Arg("pass", "Student password"));      // arguments (list)
 	}
 
 	public String getName() {
@@ -31,5 +31,8 @@ public final class LoginMenu extends MenuBase {
 
 	    // Necessary because of the "Void" type
 	    return null;
+	}
+	private Boolean tryLogin(final HashMap<String, String> args) {
+		
 	}
 }

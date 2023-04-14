@@ -8,7 +8,6 @@
 public final class Main2 {
 	public static void main(String[] args) {
 		MenuManager.enterMenu(new LoginMenu());
-		MenuManager.showUsage();
 		MenuManager.mainLoop();
 	}
 }
