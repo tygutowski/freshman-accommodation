@@ -13,18 +13,11 @@ public class StudentLifeMenu extends MenuBase{
 			if (instance == null) {
 				instance = new StudentLifeMenu();
 			}
-			/*
-			else {
-				System.out.println("Student Life already exists");
-			}
-			*/
+
 			return instance;
 		}
 		
 		// Constructor
-		//private StudentLifeMenu() { }
-		
-
 		public StudentLifeMenu() {
 			addOption(this::newEvent,                 // handler
 					  "new",                       // name
@@ -34,31 +27,6 @@ public class StudentLifeMenu extends MenuBase{
 					  "View current events");
 		}
 
-		/*
-		public void studentTabInterface() {
-			
-			Scanner sc = new Scanner(System.in);
-			int input = -1;
-			System.out.println("---------- Social Hub ----------");
-			do {
-				System.out.println("1. Add Event");
-				System.out.println("2. View Events");
-				System.out.println("0. Go Back");
-
-				System.out.print("Please select an action: ");
-				input = sc.nextInt();
-
-				if (input == 1) {
-					newEvent();
-				}
-				else if (input == 2) {
-					displayCurrentEvents();
-				}
-
-			} while (input != 0);
-		}
-		*/
-		
 		// Viewing & Adding Events
 		public Boolean newEvent(final HashMap<String, String> args) {
 			
@@ -87,8 +55,6 @@ public class StudentLifeMenu extends MenuBase{
 			currentEvents.printList();
 			return false;
 		}
-
-
 
 		public String getName() {
 			return "Student Life Tab";
