@@ -17,6 +17,11 @@ public final class ApplicationMenu extends MenuBase {
 		addOption(this::eventHub, // handler
 				 "1",        // name
 				 "Event Hub");
+
+		addOption(this::hygieneHub, // handler
+				 "2",        // name
+				 "Hygiene Hub");
+
         addOption(this::openPlannerMgr, // handler
                 "3",        // name
                 "Planner Manager");
@@ -40,6 +45,11 @@ public final class ApplicationMenu extends MenuBase {
 	
 	private Boolean eventHub(final HashMap<String, String> args) {
 		MenuManager.enterMenu(new StudentLifeMenu());
+		return false;
+	}
+
+	private Boolean hygieneHub(final HashMap<String, String> args) {
+		MenuManager.enterMenu(new HygieneMenu());
 		return false;
 	}
 	
